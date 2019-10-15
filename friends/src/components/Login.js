@@ -3,6 +3,7 @@ import axios from "axios";
 
 const Login = props => {
   const { valueChange, loginUser, formValues } = props;
+
   const submitUserDetails = e => {
     e.preventDefault();
     console.log("formValue from button", formValues);
@@ -10,9 +11,11 @@ const Login = props => {
       .post("http://localhost:5000/api/login", formValues)
       .then(res => {
         console.log("response from server", res);
+        window.localStorage.setItem("token", res.data.payload);
+        props.history.push('/friends');
       })
       .catch(err => {
-        console.log("error from server", err.message);
+        alert("error from server", err.message);
       });
   };
 

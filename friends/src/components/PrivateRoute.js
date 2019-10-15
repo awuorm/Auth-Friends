@@ -1,11 +1,11 @@
 import React from "react";
 import {Redirect} from "react-router-dom";
 
-function PrivateRoute(Component, props) {
-    if (localStorage.getItem('token')) {
+export function PrivateRoute(Component, props) {
+    console.log("you are hitting private route", props);
+    if (window.localStorage.getItem('token')) {
       return <Component {...props} />
     }
     return <Redirect to='/' />;
   }
 
-export default PrivateRoute;

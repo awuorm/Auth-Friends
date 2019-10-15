@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import logo from "./logo.svg";
+import {Route} from "react-router-dom";
+
 import "./App.css";
 import Login from "./components/Login";
-import PrivateRoute from "./components/PrivateRoute";
+import {PrivateRoute} from "./components/PrivateRoute";
+import FriendsList from "./components/FriendsList";
 
 const App = () => {
   const [formValues, setFormValues] = useState({
@@ -20,12 +22,12 @@ const App = () => {
   return (
     <div className="App">
       Hello from App!
-      <Login
+    <Route  exact path="/" render={props =>  <Login {...props}
         loginUser={loginUser}
         formValues={formValues}
         valueChange={valueChange}
-      />
-      <PrivateRoute />
+    /> }/>
+      <Route exact path="/friends" render = {props => PrivateRoute(FriendsList,props) }/>
     </div>
   );
 };
