@@ -1,17 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Login from './components/Login';
-import PrivateRoute from './components/PrivateRoute';
+import React, { useState } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import Login from "./components/Login";
+import PrivateRoute from "./components/PrivateRoute";
 
-function App() {
+const App = () => {
+  const [formValues, setFormValues] = useState({
+    username: "",
+    password: ""
+  });
+  const valueChange = e => {
+    setFormValues({ ...formValues, [e.target.name]: e.target.value });
+  };
+
+  const loginUser = e => {
+    e.preventDefault();
+    console.log("form values", formValues);
+  };
   return (
     <div className="App">
       Hello from App!
-      <Login/>
-      <PrivateRoute/>
+      <Login
+        loginUser={loginUser}
+        formValues={formValues}
+        valueChange={valueChange}
+      />
+      <PrivateRoute />
     </div>
   );
-}
+};
 
 export default App;
