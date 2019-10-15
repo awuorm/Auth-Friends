@@ -6,6 +6,7 @@ import Login from "./components/Login";
 import { PrivateRoute } from "./components/PrivateRoute";
 import FriendsList from "./components/FriendsList";
 import FriendForm from "./components/FriendForm";
+import ShowFriend from "./components/ShowFriend";
 
 let friendsArr, setFriends;
 
@@ -65,6 +66,7 @@ const App = () => {
           />
          }
       />
+      <Route exact path="/friends:id" render={props => <ShowFriend {...props}/>}/>
        
     </div>
   );

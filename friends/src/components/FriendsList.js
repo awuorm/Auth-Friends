@@ -27,7 +27,7 @@ const FriendsList = props => {
       {propValues[0].friendsArray.map(friend => (
         <Friend key={friend.id} friend={friend} />
       ))}
-      <NavLink to="/friends/add">Add Friends</NavLink>
+     <Route exact path="/friends" render ={ props => <NavLink to="/friends/add">Add Friends</NavLink> } />
     </div>
   );
 };

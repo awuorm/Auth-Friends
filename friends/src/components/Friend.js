@@ -1,5 +1,5 @@
 import React from "react";
-
+import {NavLink} from "react-router-dom";
 
 
 const Friend = (props) => {
@@ -9,7 +9,7 @@ const Friend = (props) => {
 
     return (
         <div key={friend.id}>
-           <h5>My friend's name is {friend.name}, his/her age is {friend.age} and email is {friend.email}</h5>
+           <NavLink to={`/friends/${friend.id}`}>My friend's name is {friend.name}, his/her age is {friend.age} and email is {friend.email}</NavLink>
         </div>
     )
 }
